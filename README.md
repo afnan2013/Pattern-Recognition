@@ -1,1 +1,1 @@
-# Patter-Recognition
+# Pattern-Recognition
