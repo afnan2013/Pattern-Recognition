@@ -13,7 +13,6 @@ s_values = ""
 def print_regression_result(mae, total):
     print("Mean absolute error : ", mae)
     print("Total number of instances : ", total)
-    s_values += "Mean absolute error for k = : " + str(mae) + "\nTotal number of instances : " + str(total)
     #file_wine.write("Mean absolute error for k = : " + str(mae) + "\nTotal number of instances : " + str(total))
 
 
@@ -21,9 +20,9 @@ def print_class_result(correct, total):
     print("Number of correctly classified instances : ", correct)
     print("Total number of instances : ", total)
     print("Accuracy : ", correct / total)
-    file_yeast.write("Number of correctly classified instances : " +
-                     str(correct) + "\nTotal number of instances : " +
-                     str(total) + "\nAccuracy : " + str(correct / total))
+    # file_yeast.write("Number of correctly classified instances : " +
+    #                str(correct) + "\nTotal number of instances : " +
+    #                str(total) + "\nAccuracy : " + str(correct / total))
 
 
 data = arff.loadarff('wine_train.arff')
@@ -33,6 +32,7 @@ k = 3
 wine_results = []
 while k < 8:
     print("\n")
+    s_values += "\n"
     r = 1
     sum_d = 0
     for each in df.itertuples():
@@ -56,18 +56,26 @@ while k < 8:
         # file_wine.write(str(r)+" Predicted Value: " + str(mean) + "    Actual Value : " + str(each[12])+"\n")
         r += 1
     print_regression_result(sum_d/(r-1), r-1)
+    s_values += "Mean absolute error " + str(sum_d/(r-1)) + "\nTotal number of instances : " + str(r-1)
     wine_results.append([sum_d/(r-1), k])
+    file_wine.write("Mean absolute error for k = " + str(k) + ": " + str(sum_d/(r-1))+"\n")
     k += 2
-
+wine_results.sort(key=lambda x: x[0])
+file_wine.write("Best k value = "+str(wine_results[0][1]))
+file_wine.write(s_values)
 file_wine.close()
 
 
 data1 = arff.loadarff('yeast_train.arff')
 df1 = pd.DataFrame(data1[0])
 
+s_values = ""
+
 k = 3
+yeast_result = []
 while k < 8:
     print("\n")
+    s_values+="\n"
     n = 1
     c = 0
     for each in df1.itertuples():
@@ -88,8 +96,15 @@ while k < 8:
         if mode[0][0] == each[9]:
             c += 1
         print(str(n)+" Predicted Value: "+str(mode[0][0])+"    Actual Value : "+str(each[9]))
-        file_yeast.write(str(n)+" Predicted Value: "+str(mode[0][0])+"    Actual Value : "+str(each[9])+"\n")
+        s_values += (str(n)+" Predicted Value: "+str(mode[0][0])+"    Actual Value : "+str(each[9])+"\n")
         n += 1
     print_class_result(c, n-1)
+    s_values += "Number of correctly classified instances : " +str(c) + "\nTotal number of instances : " +str(n-1) + "\nAccuracy : " + str(c / (n-1))+"\n"
+    file_yeast.write("Number of incorrectly classified instances for k = "+str(k)+" : "+str(n-1-c)+"\n")
+    yeast_result.append([n-1-c, k])
     k += 2
+
+yeast_result.sort(key=lambda x: x[0])
+file_yeast.write("Best k value = "+str(yeast_result[0][1])+"\n")
+file_yeast.write(s_values)
 file_yeast.close()

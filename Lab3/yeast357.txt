@@ -1,3 +1,8 @@
+Number of incorrectly classified instances for k = 3 : 489
+Number of incorrectly classified instances for k = 5 : 474
+Number of incorrectly classified instances for k = 7 : 465
+Best k value = 7
+
 1 Predicted Value: b'MIT'    Actual Value : b'MIT'
 2 Predicted Value: b'CYT'    Actual Value : b'MIT'
 3 Predicted Value: b'CYT'    Actual Value : b'MIT'
@@ -1039,7 +1044,9 @@
 1039 Predicted Value: b'CYT'    Actual Value : b'CYT'
 Number of correctly classified instances : 550
 Total number of instances : 1039
-Accuracy : 0.52935514918190561 Predicted Value: b'CYT'    Actual Value : b'MIT'
+Accuracy : 0.5293551491819056
+
+1 Predicted Value: b'CYT'    Actual Value : b'MIT'
 2 Predicted Value: b'ME3'    Actual Value : b'MIT'
 3 Predicted Value: b'CYT'    Actual Value : b'MIT'
 4 Predicted Value: b'NUC'    Actual Value : b'NUC'
@@ -2080,7 +2087,9 @@ Accuracy : 0.52935514918190561 Predicted Value: b'CYT'    Actual Value : b'MIT'
 1039 Predicted Value: b'NUC'    Actual Value : b'CYT'
 Number of correctly classified instances : 565
 Total number of instances : 1039
-Accuracy : 0.54379210779595771 Predicted Value: b'MIT'    Actual Value : b'MIT'
+Accuracy : 0.5437921077959577
+
+1 Predicted Value: b'MIT'    Actual Value : b'MIT'
 2 Predicted Value: b'CYT'    Actual Value : b'MIT'
 3 Predicted Value: b'CYT'    Actual Value : b'MIT'
 4 Predicted Value: b'NUC'    Actual Value : b'NUC'

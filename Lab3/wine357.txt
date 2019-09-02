@@ -1,3 +1,7 @@
+Mean absolute error for k = 3: 0.7149988654413452
+Mean absolute error for k = 5: 0.6972089857045636
+Mean absolute error for k = 7: 0.6931829232714183
+Best k value = 7
 1 Predicted Value: 5.666666666666667    Actual Value : 6.0
 2 Predicted Value: 5.333333333333333    Actual Value : 6.0
 3 Predicted Value: 5.333333333333333    Actual Value : 6.0
@@ -1467,8 +1471,9 @@
 1467 Predicted Value: 5.333333333333333    Actual Value : 5.0
 1468 Predicted Value: 5.666666666666667    Actual Value : 7.0
 1469 Predicted Value: 6.0    Actual Value : 6.0
-Mean absolute error : 0.7149988654413452
-Total number of instances : 14691 Predicted Value: 5.6    Actual Value : 6.0
+Mean absolute error 0.7149988654413452
+Total number of instances : 1469
+1 Predicted Value: 5.6    Actual Value : 6.0
 2 Predicted Value: 5.2    Actual Value : 6.0
 3 Predicted Value: 5.2    Actual Value : 6.0
 4 Predicted Value: 5.6    Actual Value : 6.0
@@ -2937,8 +2942,9 @@ Total number of instances : 14691 Predicted Value: 5.6    Actual Value : 6.0
 1467 Predicted Value: 5.4    Actual Value : 5.0
 1468 Predicted Value: 6.0    Actual Value : 7.0
 1469 Predicted Value: 6.0    Actual Value : 6.0
-Mean absolute error : 0.6972089857045636
-Total number of instances : 14691 Predicted Value: 5.571428571428571    Actual Value : 6.0
+Mean absolute error 0.6972089857045636
+Total number of instances : 1469
+1 Predicted Value: 5.571428571428571    Actual Value : 6.0
 2 Predicted Value: 5.428571428571429    Actual Value : 6.0
 3 Predicted Value: 5.428571428571429    Actual Value : 6.0
 4 Predicted Value: 5.571428571428571    Actual Value : 6.0
@@ -4407,5 +4413,5 @@ Total number of instances : 14691 Predicted Value: 5.571428571428571    Actual V
 1467 Predicted Value: 5.428571428571429    Actual Value : 5.0
 1468 Predicted Value: 5.714285714285714    Actual Value : 7.0
 1469 Predicted Value: 6.285714285714286    Actual Value : 6.0
-Mean absolute error : 0.6931829232714183
+Mean absolute error 0.6931829232714183
 Total number of instances : 1469
