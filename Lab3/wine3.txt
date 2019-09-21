@@ -3427,3 +3427,5 @@
 3427 Predicted Value: 6.666666666666667    Actual Value : 6.0
 3428 Predicted Value: 6.0    Actual Value : 5.0
 3429 Predicted Value: 6.0    Actual Value : 6.0
+Mean absolute error : 0.7136191309419658
+Total number of instances : 3429

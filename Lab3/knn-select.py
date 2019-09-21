@@ -1,13 +1,8 @@
-from scipy.io import arff
+import arff
 import pandas as pd
 import math
 import numpy as np
 from scipy import stats
-
-file_wine = open("wine357.txt", "w+")
-file_yeast = open("yeast357.txt", "w+")
-
-s_values = ""
 
 
 def print_regression_result(mae, total):
@@ -25,9 +20,24 @@ def print_class_result(correct, total):
     #                str(total) + "\nAccuracy : " + str(correct / total))
 
 
-data = arff.loadarff('wine_train.arff')
-df = pd.DataFrame(data[0])
+def eucleadian_distance(test, trainset, classifier_index):
+    distances = []
+    for row in trainset.itertuples():
+        if each != row:
+            add = 0
+            for i in range(1, len(trainset.columns)-1):
+                add += math.pow(test[i]-row[i], 2)
+            add = math.sqrt(add)
+            distances.append([add, row[classifier_index]])
+    distances.sort(key=lambda x: x[0])
+    return distances
 
+
+file_wine = open("wine357.txt", "w+")
+trainData = arff.load('wine_train.arff')
+trainDataPd = pd.DataFrame(trainData)
+
+s_values = ""
 k = 3
 wine_results = []
 while k < 8:
@@ -35,17 +45,9 @@ while k < 8:
     s_values += "\n"
     r = 1
     sum_d = 0
-    for each in df.itertuples():
+    for each in trainDataPd.itertuples():
         #print(each)
-        distances = []
-        for row in df.itertuples():
-            if each != row:
-                add = 0
-                for i in range(1, len(df.columns)-1):
-                    add += math.pow(each[i]-row[i], 2)
-                add = math.sqrt(add)
-                distances.append([add, row[12]])
-        distances.sort(key=lambda x: x[0])
+        distances = eucleadian_distance(each, trainDataPd, 12)
         responses = []
         for p in range(k):
             responses.append(distances[p][1])
@@ -53,7 +55,6 @@ while k < 8:
         sum_d += abs(mean-each[12])
         print(str(r)+" Predicted Value: " + str(mean) + "    Actual Value : " + str(each[12]))
         s_values += str(r)+" Predicted Value: " + str(mean) + "    Actual Value : " + str(each[12])+"\n"
-        # file_wine.write(str(r)+" Predicted Value: " + str(mean) + "    Actual Value : " + str(each[12])+"\n")
         r += 1
     print_regression_result(sum_d/(r-1), r-1)
     s_values += "Mean absolute error " + str(sum_d/(r-1)) + "\nTotal number of instances : " + str(r-1)
@@ -66,8 +67,11 @@ file_wine.write(s_values)
 file_wine.close()
 
 
-data1 = arff.loadarff('yeast_train.arff')
-df1 = pd.DataFrame(data1[0])
+# ****************Yeast Code Start*******************
+
+file_yeast = open("yeast357.txt", "w+")
+trainData1 = arff.load('yeast_train.arff')
+trainDataPd1 = pd.DataFrame(trainData1)
 
 s_values = ""
 
@@ -78,17 +82,9 @@ while k < 8:
     s_values+="\n"
     n = 1
     c = 0
-    for each in df1.itertuples():
+    for each in trainDataPd1.itertuples():
         #print(each)
-        distances = []
-        for row in df1.itertuples():
-            if each != row:
-                add = 0
-                for i in range(1, len(df1.columns)-1):
-                    add += math.pow(each[i]-row[i], 2)
-                add = math.sqrt(add)
-                distances.append([add, row[9]])
-        distances.sort(key=lambda x: x[0])
+        distances = eucleadian_distance(each, trainDataPd1, 9)
         responses = []
         for p in range(k):
             responses.append(distances[p][1])
