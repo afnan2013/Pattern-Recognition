@@ -1,9 +1,10 @@
 import math
 import numpy as np
+
 n = int(input("Please input the train data row : "))
 
 
-def print_distance_matrix (m, l):
+def print_distance_matrix(m, l):
     for i in range(l):
         for j in range(l):
             print(m[i][j], end=" ")
@@ -30,7 +31,7 @@ def first_distance_matrix(cluster, s):
     for i in range(n):
         for j in range(n):
             if i != j:
-                d = (s[i][0]-s[j][0])*(s[i][0]-s[j][0]) + (s[i][1]-s[j][1])*(s[i][1]-s[j][1])
+                d = (s[i][0] - s[j][0]) * (s[i][0] - s[j][0]) + (s[i][1] - s[j][1]) * (s[i][1] - s[j][1])
                 m[i][j] = math.sqrt(d)
     return m
 
@@ -50,7 +51,7 @@ def distance_matrix(cluster, fisrtDistanceMatrix):
     return m
 
 
-def find_smallest_value_index (d_matrix):
+def find_smallest_value_index(d_matrix):
     mini = 10000
     temp_i = 0
     temp_j = 0
@@ -65,6 +66,7 @@ def find_smallest_value_index (d_matrix):
 
 def solve(cluster, train):
     first = first_distance_matrix(cluster, train)
+    print_cluster(cluster)
     print_distance_matrix(first, n)
     s_index = find_smallest_value_index(first)
     print("The smallest value in this level - ", np.min(first))
@@ -77,7 +79,7 @@ def solve(cluster, train):
         print_distance_matrix(dm, len(dm))
         print("The smallest value in this level - ", np.min(dm))
         s_index = find_smallest_value_index(dm)
-
+    print(cluster_merge(cluster, 0, 1))
 
 trainSet = [[4, 4], [8, 4], [15, 8], [24, 4], [24, 12]]
 cluster = [[i] for i in range(n)]
