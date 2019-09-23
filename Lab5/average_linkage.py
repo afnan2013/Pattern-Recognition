@@ -47,7 +47,7 @@ def distance_matrix(cluster, fisrtDistanceMatrix):
                         p1 = cluster[i][p]
                         p2 = cluster[j][q]
                         temp.append(fisrtDistanceMatrix[p1][p2])
-                m[i][j] = max(temp)
+                m[i][j] = np.average(temp)
     return m
 
 
