@@ -76,12 +76,12 @@ def solve(cluster, train):
         cluster = cluster_merge(cluster, s_index[0], s_index[1])
         print_cluster(cluster)
         dm = distance_matrix(cluster, first)
-        print_distance_matrix(dm, len(dm))
+        #print_distance_matrix(dm, len(dm))
         print("The smallest value in this level - ", np.min(dm))
         s_index = find_smallest_value_index(dm)
     print(cluster_merge(cluster, 0, 1))
 
-trainSet = [[4, 4], [8, 4], [15, 8], [24, 4], [24, 12]]
+trainSet = [[4, 4], [8, 4], [15, 8], [20, 6], [21, 10],[24, 4], [24, 12]]
 cluster = [[i] for i in range(n)]
 
 solve(cluster, trainSet)

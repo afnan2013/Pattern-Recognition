@@ -26,7 +26,7 @@ def cluster_merge(oldCluster, i, j):  # i is the index for merging and j is the 
     return oldCluster
 
 
-def first_distance_matrix(cluster, s):
+def first_distance_matrix(s):
     m = [[10000 for p in range(n)] for q in range(n)]
     for i in range(n):
         for j in range(n):
@@ -65,9 +65,9 @@ def find_smallest_value_index(d_matrix):
 
 
 def solve(cluster, train):
-    first = first_distance_matrix(cluster, train)
+    first = first_distance_matrix(train)
     print_cluster(cluster)
-    print_distance_matrix(first, n)
+    #print_distance_matrix(first, n)
     s_index = find_smallest_value_index(first)
     print("The smallest value in this level - ", np.min(first))
     while 1:
@@ -76,12 +76,13 @@ def solve(cluster, train):
         cluster = cluster_merge(cluster, s_index[0], s_index[1])
         print_cluster(cluster)
         dm = distance_matrix(cluster, first)
-        print_distance_matrix(dm, len(dm))
+        #print_distance_matrix(dm, len(dm))
         print("The smallest value in this level - ", np.min(dm))
         s_index = find_smallest_value_index(dm)
     print(cluster_merge(cluster, 0, 1))
 
-trainSet = [[4, 4], [8, 4], [15, 8], [24, 4], [24, 12]]
+
+trainSet = [[4, 4], [8, 4], [15, 8], [20, 6], [21, 10],[24, 4], [24, 12]]
 cluster = [[i] for i in range(n)]
 
 solve(cluster, trainSet)
